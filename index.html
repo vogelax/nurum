@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nur ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff5e9a,#ff9dc2);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+color:white;
+}
+
+.card{
+width:90%;
+max-width:700px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,.3);
+}
+
+h1{
+font-size:45px;
+margin-bottom:30px;
+}
+
+button{
+padding:15px 35px;
+margin:10px;
+border:none;
+border-radius:40px;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.love{
+background:#fff;
+color:#ff2b78;
+}
+
+.no{
+background:#222;
+color:#fff;
+}
+
+#bb,
+#letterSection{
+display:none;
+}
+
+.envelope{
+margin:30px auto;
+width:220px;
+height:140px;
+background:#f5d6b8;
+position:relative;
+border-radius:8px;
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:0;
+height:0;
+border-left:110px solid transparent;
+border-right:110px solid transparent;
+border-top:70px solid #fff3df;
+transform-origin:top;
+transition:1s;
+}
+
+.open:before{
+transform:rotateX(180deg);
+}
+
+.paper{
+display:none;
+margin-top:20px;
+background:white;
+color:#333;
+padding:20px;
+border-radius:12px;
+text-align:left;
+min-height:260px;
+white-space:pre-wrap;
+}
+
+.hearts{
+position:absolute;
+font-size:25px;
+animation:fly 6s linear infinite;
+opacity:.7;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(100vh);
+}
+100%{
+transform:translateY(-120vh);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="home">
+
+<h1>Beni Seviyor Musun? ❤️</h1>
+
+<button class="love" onclick="yes()">Seni Seviyorum ❤️</button>
+
+<button class="no" onclick="no()">Sevmiyorum 💔</button>
+
+</div>
+
+<div class="card" id="bb">
+
+<h1>bb 👋</h1>
+
+</div>
+
+<div class="card" id="letterSection">
+
+<h1>Nur ❤️</h1>
+
+<div class="envelope" id="env"></div>
+
+<button class="love" onclick="openLetter()">💌 Mektubu Aç</button>
+
+<div class="paper" id="paper"></div>
+
+</div>
+
+<script>
+
+const text=`Sevgili Nur,
+
+Bu satırları yazarken aklımda sadece sen varsın.
+
+Seni eskiden beri çok seviyorum.
+Zaman geçse de içimdeki bu güzel his hiç kaybolmadı.
+
+Senin yanında olduğum anlarda kendimi gerçekten mutlu hissediyordum.
+
+Benim için her zaman çok özel biri oldun.
+
+Belki hayat bizi farklı yerlere götürdü ama seni hiçbir zaman unutamadım.
+
+Hayatımın en değerli anılarından biri oldun.
+
+İyi ki seni tanımışım.
+
+❤️`;
+
+function yes(){
+
+home.style.display="none";
+letterSection.style.display="block";
+
+}
+
+function no(){
+
+home.style.display="none";
+bb.style.display="block";
+
+}
+
+function openLetter(){
+
+env.classList.add("open");
+
+paper.style.display="block";
+
+let i=0;
+
+paper.innerHTML="";
+
+let timer=setInterval(()=>{
+
+paper.innerHTML+=text.charAt(i);
+
+i++;
+
+if(i>=text.length)
+clearInterval(timer);
+
+},35);
+
+}
+
+for(let i=0;i<25;i++){
+
+let h=document.createElement("div");
+
+h.innerHTML="❤️";
+
+h.className="hearts";
+
+h.style.left=Math.random()*100+"%";
+
+h.style.animationDuration=(4+Math.random()*5)+"s";
+
+h.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+}
+
+</script>
+
+</body>
+</html>
